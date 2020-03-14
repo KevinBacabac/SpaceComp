@@ -3,9 +3,7 @@ For each owned planet, pick a random enemy planet and attack it.
 Each turn only send 20% of ships per planet to attack.
 */
 
-class SwarmBot { // You must pick a new custom name
-  name = "SwarmBot";
-
+class SwarmBot {
   action(your_state, world_state, helper) {
     var actions = new Set();
     var other_planets = helper.getOtherPlayer(your_state, "Planet");

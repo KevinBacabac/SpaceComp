@@ -2,8 +2,7 @@ var canvas;
 var explosionsOn = true;
 
 $(document).ready(() => {
-
-  document.body.onmousedown = () => { return false; } //so page is unselectable
+  document.body.onmousedown = () => { return false; } // so page is unselectable
 
 	// Canvas stuff
 	canvas = $("#canvas")[0];

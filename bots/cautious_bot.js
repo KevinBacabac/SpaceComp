@@ -2,9 +2,7 @@
 For each planet owned, target the nearest planet aggressively.
 */
 
-class CautiousBot { // You must pick a new custom name
-  name = "CautiousBot";
-
+class CautiousBot {
   action(your_state, world_state, helper) {
     var actions = new Set();
     var other_planets = helper.getOtherPlayer(your_state, "Planet");

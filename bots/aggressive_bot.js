@@ -2,9 +2,7 @@
 Pick only one planet at a time and send all ships to attack it.
 */
 
-class AggressiveBot { // You must pick a new custom name
-  name = "AggressiveBot";
-
+class AggressiveBot {
   action(your_state, world_state, helper) {
     var actions = new Set();
     var other_planets = helper.getOtherPlayer(your_state, "Planet");
