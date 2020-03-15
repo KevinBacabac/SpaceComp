@@ -2,7 +2,6 @@ var canvas;
 var explosionsOn = true;
 
 $(document).ready(() => {
-
   document.body.onmousedown = () => { return false; } //so page is unselectable
 
 	// Canvas stuff
@@ -15,11 +14,6 @@ $(document).ready(() => {
 	init();
 });
 
-////////////////////////////////
-////////	GAME INIT
-///////	Runs this code right away, as soon as the page loads.
-//////	Use this code to get everything in order before your game starts
-//////////////////////////////
 function init() {
   game = new GraphicEngine();
   setInterval(() => {
@@ -37,7 +31,3 @@ function paint() {
 
   game.update(ctx, dTime);
 }/////////////////////////////END PAINT/ GAME ENGINE
-
-function removeQueuedItems(particles) {
-	return particles.filter(i => !i.toBeRemoved);
-}

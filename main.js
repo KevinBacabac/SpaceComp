@@ -14,11 +14,6 @@ $(document).ready(() => {
 	init();
 });
 
-////////////////////////////////
-////////	GAME INIT
-///////	Runs this code right away, as soon as the page loads.
-//////	Use this code to get everything in order before your game starts
-//////////////////////////////
 function init() {
   game = new GraphicEngine();
   setInterval(() => {
@@ -29,9 +24,7 @@ function init() {
 	requestAnimationFrame(paint);
 }
 
-//////////////////////////////////////////////////////
 ////////	Main Game Engine
-////////////////////////////////////////////////////
 function paint(timestamp) {
   if (!start) start = timestamp;  // First frame
   var dTime = (timestamp - start) / 1000;
@@ -40,8 +33,4 @@ function paint(timestamp) {
 
   start = timestamp;
   requestAnimationFrame(paint);
-}/////////////////////////////END PAINT/ GAME ENGINE
-
-function removeQueuedItems(particles) {
-	return particles.filter(i => !i.toBeRemoved);
 }

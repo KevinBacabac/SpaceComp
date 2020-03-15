@@ -5,12 +5,12 @@ Pick only one planet at a time and send all ships to attack it.
 class AggressiveBot {
   action(your_state, world_state, helper) {
     var actions = new Set();
-    var other_planets = helper.getOtherPlayer(your_state, "Planet");
+    var otherPlanets = helper.getOtherPlayer(your_state, "Planet");
 
     // Do nothing
-    if (other_planets.size == 0) return actions;
+    if (otherPlanets.size == 0) return actions;
 
-    var targetId = Array.from(other_planets)[0];
+    var targetId = Array.from(otherPlanets)[0];
 
     for (var type of ["Planet", "Ship"]) {
       your_state.get(type).forEach((item, id) => {
@@ -21,7 +21,7 @@ class AggressiveBot {
           action.set("Source ID", id);
           action.set("Source Type", type);
 
-          let targetID = AggressiveBot.closestPlanet(helper, other_planets, id, type);
+          let targetID = AggressiveBot.closestPlanet(helper, otherPlanets, id, type);
           action.set("Target", targetID);
 
           actions.add(action);
@@ -32,11 +32,11 @@ class AggressiveBot {
     return actions;
   }
 
-  static closestPlanet(helper, other_planets, sourceID, sourceType) {
+  static closestPlanet(helper, otherPlanets, sourceID, sourceType) {
     var dist = false;
     var closest = null;
 
-    for (var otherID of other_planets) {
+    for (var otherID of otherPlanets) {
       let newDist;
       if (sourceType == "Planet") {
         newDist = helper.getDistance("Planet", sourceID, otherID);

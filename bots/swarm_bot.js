@@ -6,10 +6,10 @@ Each turn only send 20% of ships per planet to attack.
 class SwarmBot {
   action(your_state, world_state, helper) {
     var actions = new Set();
-    var other_planets = helper.getOtherPlayer(your_state, "Planet");
+    var otherPlanets = helper.getOtherPlayer(your_state, "Planet");
 
     // Do nothing
-    if (other_planets.size == 0) return actions;
+    if (otherPlanets.size == 0) return actions;
 
     your_state.get("Planet").forEach((item, id) => {
       if (item.get("Health") > 0) {
@@ -19,7 +19,7 @@ class SwarmBot {
         action.set("Source ID", id);
         action.set("Source Type", "Planet");
 
-        let targetId = randChoice(Array.from(other_planets));
+        let targetId = randChoice(Array.from(otherPlanets));
         action.set("Target", targetId);
 
         actions.add(action);

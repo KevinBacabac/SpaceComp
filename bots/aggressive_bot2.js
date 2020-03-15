@@ -5,12 +5,12 @@ Pick only one planet at a time and send all ships to attack it.
 class AggressiveBot {
   action(your_state, world_state, helper) {
     var actions = new Set();
-    var other_planets = helper.getOtherPlayer(your_state, "Planet");
+    var otherPlanets = helper.getOtherPlayer(your_state, "Planet");
 
     // Do nothing
-    if (other_planets.size == 0) return actions;
+    if (otherPlanets.size == 0) return actions;
 
-    var targetId = Array.from(other_planets)[0];
+    var targetId = Array.from(otherPlanets)[0];
 
     for (var type of ["Planet", "Ship"]) {
       your_state.get(type).forEach((item, id) => {

@@ -1,5 +1,5 @@
 # Space Competition
-Our goal is to make bots that compete in a [physics-based war game](https://kevinbacabac.github.io/SpaceComp/index.html) using Javascript! You will be responsible for developing the strategy your bot will use to conquer the stars.
+Our goal is to make bots that compete in a [physics-based war game](https://kevinbacabac.github.io/SpaceComp/index.html) using Javascript! You will develop the strategy your bot will use to conquer the stars.
 
 ## Learning Objectives
 

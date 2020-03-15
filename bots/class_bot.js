@@ -5,10 +5,10 @@ For each planet owned, target the nearest planet aggressively.
 class ClassBot {
   action(your_state, world_state, helper) {
     var actions = new Set();
-    var other_planets = helper.getOtherPlayer(your_state, "Planet");
+    var otherPlanets = helper.getOtherPlayer(your_state, "Planet");
 
     // Do nothing
-    if (other_planets.size == 0) return actions;
+    if (otherPlanets.size == 0) return actions;
 
     for (var type of ["Planet", "Ship"]) {
       your_state.get(type).forEach((item, id) => {
@@ -21,7 +21,7 @@ class ClassBot {
           action.set("Source ID", id);
           action.set("Source Type", type);
 
-          let targetID = ClassBot.closestPlanet(helper, other_planets, id);
+          let targetID = ClassBot.closestPlanet(helper, otherPlanets, type, id);
           action.set("Target", targetID);
 
           let target = world_state.get("Planet").get(targetID);
@@ -37,12 +37,17 @@ class ClassBot {
     return actions;
   }
 
-  static closestPlanet(helper, other_planets, sourceID) {
+  static closestPlanet(helper, otherPlanets, type, sourceID) {
     var dist = false;
     var closest = null;
 
-    for (var otherID of other_planets) {
-      let newDist = helper.getDistance("Planet", sourceID, otherID);
+    for (var otherID of otherPlanets) {
+      let newDist;
+      if (type == "Planet") {
+         newDist = helper.getDistance("Planet", sourceID, otherID);
+      } else {
+        newDist = helper.getPlanetShipDistance(otherID, sourceID);
+      }
       if (dist === false || newDist < dist) {
         closest = otherID;
         dist = newDist;

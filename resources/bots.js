@@ -2,6 +2,7 @@ class Bots {
   constructor() {
     this.bots = new Map();
 
+    // Add your bot here
     const IMPORTS = [SwarmBot, AggressiveBot, CautiousBot, ClassBot, YourBot];
 
     for (var Class of IMPORTS) {
@@ -21,7 +22,6 @@ class Bots {
         console.error(e);
         return;
       }
-
 
       // Verify output
       let player_state = helper.getYourState(name);

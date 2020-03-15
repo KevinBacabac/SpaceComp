@@ -5,10 +5,10 @@ For each planet owned, target the nearest planet aggressively.
 class CautiousBot {
   action(your_state, world_state, helper) {
     var actions = new Set();
-    var other_planets = helper.getOtherPlayer(your_state, "Planet");
+    var otherPlanets = helper.getOtherPlayer(your_state, "Planet");
 
     // Do nothing
-    if (other_planets.size == 0) return actions;
+    if (otherPlanets.size == 0) return actions;
 
     your_state.get("Planet").forEach((item, id) => {
       if (item.get("Health") > 20) {
@@ -21,7 +21,7 @@ class CautiousBot {
         action.set("Source Type", "Planet");
 
 
-        let targetID = CautiousBot.closestPlanet(helper, other_planets, id);
+        let targetID = CautiousBot.closestPlanet(helper, otherPlanets, id);
         action.set("Target", targetID);
 
         actions.add(action);
@@ -31,11 +31,11 @@ class CautiousBot {
     return actions;
   }
 
-  static closestPlanet(helper, other_planets, sourceID) {
+  static closestPlanet(helper, otherPlanets, sourceID) {
     var dist = false;
     var closest = null;
 
-    for (var otherID of other_planets) {
+    for (var otherID of otherPlanets) {
       let newDist = helper.getDistance("Planet", sourceID, otherID);
       if (dist === false || newDist < dist) {
         closest = otherID;
