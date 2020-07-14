@@ -1,17 +1,16 @@
 var canvas;
 var explosionsOn = true;
 
-$(document).ready(() => {
+document.addEventListener("DOMContentLoaded", () => {
   document.body.onmousedown = () => { return false; } // so page is unselectable
 
-	// Canvas stuff
-	canvas = $("#canvas")[0];
+  // Canvas stuff
+  canvas = document.getElementById("canvas");
   addListeners(canvas);
-	ctx = canvas.getContext("2d");
-	w = $("#canvas").width();
-	h = $("#canvas").height();
-
-	init();
+  ctx = canvas.getContext("2d");
+  w = canvas.width;
+  h = canvas.height;
+  init();
 });
 
 function init() {
@@ -21,7 +20,7 @@ function init() {
   }, 1000);
 
   start = null;
-	requestAnimationFrame(paint);
+  requestAnimationFrame(paint);
 }
 
 ////////	Main Game Engine
