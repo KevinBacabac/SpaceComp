@@ -1,7 +1,7 @@
 class GraphicEngine extends Engine {
   draw(ctx, dTime) {
     ctx.fillStyle = 'black';
-  	ctx.fillRect(0, 0, w, h);
+    ctx.fillRect(0, 0, w, h);
 
     this.active.forEach((item, i) => {
       item.draw(ctx, this.colourManager);

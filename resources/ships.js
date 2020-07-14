@@ -5,7 +5,7 @@ class Ship extends SpaceObject {
   TYPE = "Ship";
 
   constructor(x, y, destX, destY, // Visualizer
-              health, owner, sourceID, sourceType, targetID, helper) {
+    health, owner, sourceID, sourceType, targetID, helper) {
     super();
     this.setOwner(owner);
 
@@ -28,10 +28,10 @@ class Ship extends SpaceObject {
 
     for (var angle of [0, 140, 220]) {
       var temp = rotatePoint(0, 0, 0, -this.SIZE,
-                   // "angle" is in degrees
-                   // this.rotation in radians and clockwise from vertical
-                   angle * TAU / 360 + this.rotation + TAU / 4
-                   );
+        // "angle" is in degrees
+        // this.rotation in radians and clockwise from vertical
+        angle * TAU / 360 + this.rotation + TAU / 4
+      );
 
       // Flip y coordinates so rotations are done in conventional math form but match screen
       temp.y *= -1;
@@ -44,7 +44,7 @@ class Ship extends SpaceObject {
     ctx.fillStyle = this.colour;
     ctx.font = "12pt BebasNeue-Regular";
     ctx.fillText(this.health, this.rect.centerx(),
-                 this.rect.centery() - this.SIZE);
+      this.rect.centery() - this.SIZE);
   }
 
   move(dTime) {

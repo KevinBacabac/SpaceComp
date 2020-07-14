@@ -41,7 +41,7 @@ class Engine {
 
     let helper = new Helper(this.active, this.events, this.getAlivePlayers());
     this.active.get("Ship").add(...srcPos, ...destPos,
-                   shipHealth, owner, sourceID, "Planet", target, helper);
+      shipHealth, owner, sourceID, "Planet", target, helper);
 
     if (sourceType == "Ship" && source.health == 0) {
       this.active.get("Ship").remove(sourceID);

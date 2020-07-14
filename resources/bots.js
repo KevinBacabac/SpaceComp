@@ -36,7 +36,7 @@ class Bots {
 
           // Cannot fire from same planet to same planet
           if (srcType == "Planet"
-              && action.get("Source ID") == action.get("Target")) return;
+            && action.get("Source ID") == action.get("Target")) return;
 
           // Cannot control other player owned planets / ships
           let srcID = action.get("Source ID");
